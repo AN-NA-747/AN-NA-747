@@ -1,11 +1,13 @@
-## 👋 HI! 我是anna
+## About👋 
+这里是anna747 
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=AN-NA-747&count_private=true&theme=cobalt&show_icons=true)
 
-[![GitPage](https://img.shields.io/badge/GitPagePage-webstep-blueviolet?style=for-the-badge&logo=github&color=fd79a8)](https://github.com/AN-NA-747)
 
 
+## Program_Language（按照熟练程度排序） ✨
+- `Python`
+- `JavaScript`
+- `Java`
 
-## 新年汇总 ✨
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs?username=AN-NA-747&layout=compact)
 
-<img align="" height="137px" src="https://github-readme-stats.vercel.app/api?username=AN-NA-747&hide_title=true&hide_border=false&show_icons=true&include_all_commits=true&line_height=21&locale=cn" />   <img align="" height="137px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=AN-NA-747&hide_title=true&hide_border=false&layout=compact&locale=cn" />
-
-![Snake](https://github.com/AN-NA-747/AN-NA-747/blob/snake/github-contribution-grid-snake.svg?raw=true)
