@@ -11,6 +11,10 @@ SELECT nvl(null,null);
 SELECT cast("wu" as int);
 -- :NULL
 
+-- URL 解析
+SELECT PARSE_URL_TUPLE("https://cn.bing.com/search?q=%E6%9C%89%E9%81%93&PC=U316&FORM=CHROMN", 'PROTOCOL', 'HOST', 'PATH', 'QUERY');
+-- | https | cn.bing.com | /search | q=%E6%9C%89%E9%81%93&PC=U316&FORM=CHROMN |
+
 
 ---------------------------------------------------------------------------
 -- Returns the date that is num_days before start_date.
@@ -43,6 +47,5 @@ SELECT date_add('2023-08-30',-1);
 -- :2023-08-29
 SELECT date_add('2023-08-30',2);
 -- :2023-09-01
-
 
 
