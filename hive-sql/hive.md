@@ -18,7 +18,7 @@ alter table PARTITION_KEYS modify column PKEY_COMMENT varchar(4000) character se
 alter table INDEX_PARAMS modify column PARAM_VALUE varchar(4000) character set utf8;
 ```
 ```xml
-<!-- hive-site.xml配置文件 -->
+<!-- hive-site.xml配置文件 添加编码方式 -->
 <property>
     <name>javax.jdo.option.ConnectionURL</name>
     <value>jdbc:mysql://IP:3306/db_name?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8</value>
@@ -56,6 +56,10 @@ hadoop/etc/hadoop/capacity-scheduler.xml中yarn.scheduler.capacity.maximum-am-re
     </property>
 ```
 ```hiveql
+-- 本地模式 true false 可以加快小表的查询速度
+set hive.exec.mode.local.auto=false;
+
+--  不确定 
 SET hive.exec.compress.intermediate=true;
 -- 中间结果压缩
 SET hive.intermediate.compression.codec=org.apache.hadoop.io.compress.SnappyCodec;
@@ -74,5 +78,14 @@ SET hive.cbo.enable=true; --从 v0.14.0默认true
 SET hive.compute.query.using.stats=true; -- 默认false
 SET hive.stats.fetch.column.stats=true; -- 默认false
 SET hive.stats.fetch.partition.stats=true; -- 默认true
+```
+```hiveql
 set hive.execution.engine=spark;
+-- set hive.enable.spark.execution.engine=true;
+set spark.master=yarn-client;
+set spark.enentLog.enabled=true;
+set spark.serializer=org.apache.spark.serializer.KryoSerializer;
+set spark.executor.extraJavaOptions=-XX:+PrintGCDetails -Dkey=value -Dnumbers="one two three";
+
+
 ```
