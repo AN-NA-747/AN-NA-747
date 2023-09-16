@@ -7,9 +7,8 @@ CREATE TABLE UUID_TEST
 -- 通过查询 插入一个表
 --     特殊方法 generateUUIDv4()
 INSERT INTO UUID_TEST
-SELECT generateUUIDv4(),
-       't1' --第二行UUID没有值
-;
+SELECT generateUUIDv4(),'t1';
+--第二行UUID没有值;
 -- 插入一个字段
 INSERT
 INTO UUID_TEST(c2)
@@ -18,7 +17,7 @@ VALUES ('t2');
 SELECT *
 FROM UUID_TEST;
 
--- 创建枚举类型
+-- 创建枚举类型 Enum8/16
 CREATE TABLE Enum_TEST
 (
     c1 Enum8('ready' = 1, 'start' = 2, 'success' = 3, 'error' = 4)
@@ -84,4 +83,19 @@ url String,
 ip IPv4
 ) ENGINE = Memory;
 INSERT INTO IP4_TEST VALUES ('www.nauu.com','192.0.0.0');
-SELECT url , ip ,toTypeName(ip) FROM IP4_TEST
+SELECT url , ip ,toTypeName(ip) FROM IP4_TEST;
+
+SHOW CREATE DATABASE default;
+SHOW CREATE TABLE default.nested_test;
+
+CREATE TABLE partition_v1 (
+ID String,
+URL String,
+EventTime Date
+) ENGINE = MergeTree()
+PARTITION BY toYYYYMM(EventTime)
+ORDER BY ID ;
+INSERT INTO partition_v1 VALUES
+('A000','www.nauu.com', '2019-05-01'),
+('A001','www.brunce.com', '2019-06-02') ;
+SELECT table,partition,path from system.parts WHERE table = 'partition_v1'
